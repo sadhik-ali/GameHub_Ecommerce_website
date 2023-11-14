@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Category(models.Model):
-  name = models.CharField(max_length=100)
+  name = models.CharField(max_length=200)
   slug = models.SlugField(unique=True)
   display_in_home = models.BooleanField(default=False)
 
@@ -27,21 +27,3 @@ class Product(models.Model):
 class LogoSectionProduct(models.Model):
   LogoImage = models.ImageField(upload_to='media')
 
-  
-
-class gamecartsection(models.Model):
-  image = models.ImageField(upload_to='media')
-  name = models.CharField(max_length=50)
-  price = models.IntegerField()
-  
-  def __str__(self):
-   return self.name
-  
-class gamecartsectiontwo(models.Model):
-  image = models.ImageField(upload_to='media')
-  name = models.CharField(max_length=50)
-  price = models.IntegerField()
-
-  def __str__(self):
-   return self.name
-  

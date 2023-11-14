@@ -1,11 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView
-from .models import Category, Product, LogoSectionProduct, gamecartsection, gamecartsectiontwo
-# Create your views here.
-# from django.shortcuts import render, redirect
-# from django.contrib.auth.decorators import login_required
-# from cart.cart import Cart
-
+from .models import Category, Product, LogoSectionProduct
 
 class index(TemplateView):
   template_name ="web/index.html" 
@@ -24,16 +19,7 @@ class Detail_Page(DetailView):
 
 
 
-class game(TemplateView):
-  template_name ="web/game.html" 
-   
-  def get_context_data(self, **kwargs) :
-      context = super().get_context_data(**kwargs)
-      context["gamecartfirst"] = gamecartsection.objects.all()
-      context["gamecartsecond"] = gamecartsectiontwo.objects.all()
-      
-      return context
-  
+
 
 def checkout(request):
   return render(request, 'web/checkout.html')
