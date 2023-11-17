@@ -4,7 +4,7 @@ from django.contrib.auth.models import User, Group
 
 # Register your models here.
 # To remove user,groups from admin panel
-admin.site.unregister(User)
+# admin.site.unregister(User)
 admin.site.unregister(Group)
 
 admin.site.register(LogoSectionProduct)

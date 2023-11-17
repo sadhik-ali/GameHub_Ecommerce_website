@@ -1,8 +1,12 @@
-{% extends "web/partials/base.html" %}
+{% extends "web/base.html" %}
 
 {% load static %}
 
+{% load cart_tag %}
+
 {% block content %}
+
+
 
     <!-- section start -->
     <section class="section-b-space">
@@ -69,28 +73,36 @@
                                         <div class="title-box">
                                             <div>Product <span>Total</span></div>
                                         </div>
+                                        {% for key,value in request.session.cart.items %}
                                         <ul class="qty">
-                                            <li>Pink Slim Shirt × 1 <span>$25.10</span></li>
+                                            <li>{{value.name}}<span>₹{{value.price}}</span></li>
                                         </ul>
                                         <ul class="sub-total">
-                                            <li>Subtotal <span class="count">$380.10</span></li>
-                                            <li>Shipping
+                                            <li>Subtotal <span class="count">₹{{ value.price|multiply:value.quantity }}</span></li>
+                                            <li>Shipping Charge
                                                 <div class="shipping">
                                                     <div class="shopping-option">
-                                                        <input type="checkbox" name="free-shipping" id="free-shipping">
-                                                        <label for="free-shipping">Free Shipping</label>
+                                                      
+                                                        <p>₹35.00</p>
                                                     </div>
+                                                  
+                                                </div>
+                                            </li>
+                                            <li>TAX & GST
+                                                <div class="shipping">
                                                     <div class="shopping-option">
-                                                        <input type="checkbox" name="local-pickup" id="local-pickup">
-                                                        <label for="local-pickup">Local Pickup</label>
+                                                      
+                                                        <p>₹29.00</p>
                                                     </div>
+                                                  
                                                 </div>
                                             </li>
                                         </ul>
                                         <ul class="total">
-                                            <li>Total <span class="count">$620.00</span></li>
+                                            <li>Total <span class="count">₹{{cart_total_amount |add:29|add:35}}</span></li>
                                         </ul>
                                     </div>
+                                    {% endfor %}
                                     <div class="payment-box">
                                         <div class="upper-box">
                                             <div class="payment-options">

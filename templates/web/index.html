@@ -1,4 +1,4 @@
-{% extends "web/partials/base.html" %}
+{% extends "web/base.html" %}
 
 {% load static %}
 
@@ -612,7 +612,7 @@
                     <div class="product-box product-wrap">
                         <div class="img-wrapper">
                             <div class="front">
-                                <a href="{% url 'Detail_Page' p.id %}"><img src="{{p.image.url}}"
+                                <a href="{% url 'detail_page' p.id %}"><img src="{{p.image.url}}"
                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
                             <div class="cart-box style-1 rounded-0">
@@ -741,12 +741,12 @@
                                             <li><a href="#trending">Trending now</a></li>
                                             <li><a href="#gaminig">KeyBoard</a></li>
                                             <li><a href="#gaminig">Mouse</a></li>
-                                            <li><a href="#apple">Apple Products</a></li>
-                                            <li><a href="#apple">Macbook</a></li>
+                                            <li><a href="#apple">Products</a></li>
+                                            <li><a href="#apple">Headphone</a></li>
                                             <li><a href="#gaminig">Monitors</a></li>
                                             <li><a href="#gaminig">PlayStation</a></li>
                                             <li><a href="#laptop">Laptops</a></li>
-                                            <li><a href="#brands">Game</a></li>
+                                            <li><a href="#brands">Game Pad</a></li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -769,7 +769,7 @@
                                 <div class="product-box product-wrap">
                                     <div class="img-wrapper">
                                         <div class="front">
-                                            <a href="{% url 'Detail_Page' g.id %}"><img src="{{g.image.url}}"
+                                            <a href="{% url 'detail_page' g.id %}"><img src="{{g.image.url}}"
                                                     class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                         </div>
                                         <div class="cart-box style-1 rounded-0">
@@ -826,7 +826,7 @@
                                 <div class="product-box product-wrap">
                                     <div class="img-wrapper">
                                         <div class="front">
-                                            <a href="{% url 'Detail_Page' x.id %}"><img src="{{x.image.url}}"
+                                            <a href="{% url 'detail_page' x.id %}"><img src="{{x.image.url}}"
                                                     class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                         </div>
                                         <div class="cart-box style-1 rounded-0">

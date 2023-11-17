@@ -1,6 +1,8 @@
-{% extends "web/partials/base.html" %}
+{% extends "web/base.html" %}
 
 {% load static %}
+
+{% load cart_tag %}
 
 {% block content %}
 
@@ -25,16 +27,17 @@
                                 <th scope="col">product name</th>
                                 <th scope="col">price</th>
                                 <th scope="col">quantity</th>
-                                <th scope="col">action</th>
+                               
                                 <th scope="col">total</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% for key,value in request.session.cart.items %}
                             <tr>
                                 <td>
-                                    <a href="#"><img src="" alt=""></a>
+                                    <a href="#"><img src="{{value.image}}" alt=""></a>
                                 </td>
-                                <td><a href="#">Product name</a>
+                                <td><a href="#">{{value.name}}</a>
                                     <div class="mobile-cart-content row">
                                         <div class="col">
                                             <div class="qty-box">
@@ -45,7 +48,7 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <h2 class="td-color">10</h2>
+                                            <h2 class="td-color">{{value.price}}</h2>
                                         </div>
                                         <div class="col">
                                             <h2 class="td-color"><a href="#" class="icon"><i class="ti-close"></i></a>
@@ -54,22 +57,23 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h2>s</h2>
+                                    <h2>{{value.price}}</h2>
                                 </td>
-                                <td>
-                                    <div class="qty-box">
-                                        <div class="input-group">
-                                            <input type="number" name="quantity" class="form-control input-number"
-                                                value="1">
-                                        </div>
+                                <td class="product-quantity" style="width: 10px; text-align: center;">
+                                    <a href="{% url 'item_increment' value.product_id %}" class='cart_quantity_up'>+</a>
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="{{value.quantity}}" />
                                     </div>
+                                    <a href="{% url 'item_decrement' value.product_id %}" class='cart_quantity_down'>-</a>
                                 </td>
-                                <td><a href="#" class="icon"><i class="ti-close"></i></a></td>
+                              
                                 <td>
-                                    <h2 class="td-color">500</h2>
+                                    <h2 class="td-color">{{value.price}}</h2>
                                 </td>
                             </tr>
+                            {% endfor %}
+                            
                         </tbody>
+                       
                         
                     </table>
                     <div class="table-responsive-md">
@@ -78,7 +82,7 @@
                                 <tr>
                                     <td>total price :</td>
                                     <td>
-                                        <h2>{{cart_total_amount |add:29|add:34}}</h2>
+                                        <h2>{{cart_total_amount}}</h2>
                                     </td>
                                 </tr>
                             </tfoot>
@@ -86,9 +90,11 @@
                     </div>
                 </div>
             </div>
+            
+            
             <div class="row cart-buttons">
                 <div class="col-6"><a href="#" class="btn btn-solid">continue shopping</a></div>
-                <div class="col-6"><a href="#" class="btn btn-solid">check out</a></div>
+                <div class="col-6"><a href="{% url 'checkout' %}" class="btn btn-solid">check out</a></div>
             </div>
         </div>
     </section>
